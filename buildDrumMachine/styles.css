@@ -1,0 +1,168 @@
+/* 1. Use a more-intuitive box-sizing model. */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margins */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Allow percentage-based heights in the application */
+html, body {
+  height: 100%;
+}
+
+/* 4. Add accessible line-height, improve font rendering */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: sans-serif;
+}
+
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Remove built-in form typography styles */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem; /* Equals 16px */
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+@layer core, utility;
+
+@layer core {
+  html {
+    --color-light: oklch(0.97 0.01 0);
+    --color-dark: oklch(0.22 0.01 0);
+  }
+  
+  body {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    font-family: sans-serif;
+  }
+}
+
+@layer utility {
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+}
+
+
+.main-box {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 25px;
+    display: flex;          
+    align-items: center;    
+    justify-content: center;
+    gap: 30px;            
+    width: 600px;           
+    background-color: #b3b3b3; 
+    padding: 20px;
+    border: 5px solid orange;
+}
+
+
+.pad-bank {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px;
+    width: 60%; 
+}
+
+
+.controls-container {
+    width: 40%; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 25px;
+}
+
+
+.drum-pad {
+    height: 80px;
+    background-color: grey;
+    border: none;
+    box-shadow: 3px 3px 5px black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.control-group {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.display-box {
+  width: 100%;
+  height: 50px;
+  background-color: gray;
+}
+
+
+.control-group > .outer-select {
+  height: 25px;       
+  width: 50px;         
+  background-color:lightgray; 
+  border-radius: 20px;  
+  padding: 3px;         
+  
+
+  display: flex;        
+  justify-content: flex-start; 
+  align-items: center;  
+  
+  cursor: pointer;      
+}
+
+.control-group > .outer-select > .inner-select {
+  height: 100%;       
+  width: 40%;         
+  background-color: orange;
+  border-radius: 50%; 
+  border: none;       
+  transition: all 0.3s ease; 
+  transform: translateX(0); 
+
+}
+
+
+
+.outer-select.active .inner-select {
+    transform: translateX(23px); 
+  }
